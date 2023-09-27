@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
+import org.mozilla.javascript.*;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 TextView resultsTV,solutionTV;
@@ -43,15 +44,37 @@ MaterialButton button0,button1,button2,button3,button4,button5,button6,button7,b
         assignId(button0,R.id.button_0);
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
     void assignId(MaterialButton btn,int id){
         btn = findViewById(id);
         btn.setOnClickListener(this);
     }
+    @Override
+    public void onClick(View v) {
 
+        MaterialButton button = (MaterialButton) v;
+        String buttonText = button.getText().toString();
+        String dataToCalculate = solutionTV.getText().toString();
+
+        if (buttonText.equals("AC")){
+            solutionTV.setText("");
+            resultsTV.setText("0");
+            return;
+        }
+        if (buttonText.equals("=")){
+            solutionTV.setText(resultsTV.getText());
+            return;
+        }
+        if (buttonText.equals("C")){
+            dataToCalculate=dataToCalculate.substring(0,dataToCalculate.length()-1);
+        }
+        else {
+            dataToCalculate = dataToCalculate + buttonText;
+        }
+        solutionTV.setText(dataToCalculate);
+    }
+
+    String getResults(String data){
+        return "Calculated";
+    }
 
 }

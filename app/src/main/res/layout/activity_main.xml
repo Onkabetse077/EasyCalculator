@@ -150,7 +150,7 @@
                 android:layout_margin="12dp"
                 android:textColor="@color/white"
                 android:backgroundTint="#FF9800"
-                android:text="X">
+                android:text="*">
 
             </com.google.android.material.button.MaterialButton>
 
